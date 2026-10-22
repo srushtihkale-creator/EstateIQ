@@ -3,7 +3,7 @@
 **Project:** EstateIQ — An Intelligent Real Estate Price Prediction System Using Machine Learning  
 **Lead Developer:** srush  
 **Assistant:** Antigravity AI  
-**Current Status:** Phase 1 through Phase 5.1 Complete & Verified (33/33 Passing Tests)  
+**Current Status:** Phase 1 through Phase 5.5 Complete & Verified (38/38 Passing Tests; Commit `c8aa35c` Pushed to `origin/main`)  
 **Next Milestone:** Phase 6 — Next.js 14 Frontend Implementation (Pending User Approval)  
 **Last Updated:** 2026-10-22  
 
@@ -17,9 +17,12 @@
 | **Phase 2** | **Directory Structure Initialization** | ✅ **COMPLETED** | Standardized file names with verified SHA-256 hashes. Established project directory tree (`frontend/`, `backend/app/`, `ml/`, `supabase/`, `tests/`). |
 | **Phase 3** | **Dataset Audit & Exploratory Analysis** | ✅ **COMPLETED** | Audited all 6 CSV files. Verified 29,451 raw vs 29,050 cleaned records (401 duplicates dropped). Confirmed India bounding box coordinates and verified $100\%$ collinearity between `UNDER_CONSTRUCTION` & `READY_TO_MOVE`. |
 | **Phase 4A** | **Data Preprocessing Pipeline Construction** | ✅ **COMPLETED** | Implemented [`CityExtractor`](file:///d:/EstateIQ/ml/pipeline/preprocessing.py) (threshold $\ge 50$), [`CollinearFeatureDropper`](file:///d:/EstateIQ/ml/pipeline/preprocessing.py), [`CoordinateValidator`](file:///d:/EstateIQ/ml/pipeline/preprocessing.py), and [`TargetLeakageGuard`](file:///d:/EstateIQ/ml/pipeline/preprocessing.py). Documented decisions in [`docs/PREPROCESSING_DECISIONS.md`](file:///d:/EstateIQ/docs/PREPROCESSING_DECISIONS.md). 10/10 pytest unit tests passed. |
-| **Phase 4B** | **Candidate Model Training, Evaluation & Final Audit** | ✅ **COMPLETED** | Installed `pandas 3.0.6`, `scikit-learn 1.9.1`, `joblib 1.6.0`. Evaluated 8 candidate configurations on 23,240 train / 5,810 val records. Selected `DecisionTree_Raw` (Val RMSE: 253.16 Lacs, $R^2$: 0.8830). Serialized production artifact [`ml/inference/artifacts/estateiq_model_pipeline.joblib`](file:///d:/EstateIQ/ml/inference/artifacts/estateiq_model_pipeline.joblib). Documented in [`docs/ML_EVALUATION_REPORT.md`](file:///d:/EstateIQ/docs/ML_EVALUATION_REPORT.md). Audit proved $87\%$ of SSE is concentrated in top $1\%$ luxury properties ($>1,000$ Lacs); for normal properties ($\le 1,000$ Lacs), RMSE drops to **91.69 Lacs**. |
+| **Phase 4B** | **Candidate Model Training, Evaluation & Final Audit** | ✅ **COMPLETED** | Installed `pandas 3.0.6`, `scikit-learn 1.9.1`, `joblib 1.6.0`. Evaluated 8 candidate configurations on 23,240 train / 5,810 val records. Selected `DecisionTree_Raw` (Val RMSE: 253.16 Lacs, $R^2$: 0.8830). Serialized production artifact [`ml/inference/artifacts/estateiq_model_pipeline.joblib`](file:///d:/EstateIQ/ml/inference/artifacts/estateiq_model_pipeline.joblib). Documented in [`docs/ML_EVALUATION_REPORT.md`](file:///d:/EstateIQ/docs/ML_EVALUATION_REPORT.md). Audit proved $87.01\%$ of SSE is concentrated in top $1\%$ luxury properties ($>1,000$ Lacs); for normal properties ($\le 1,000$ Lacs), RMSE drops to **91.70 Lacs**. |
 | **Phase 5** | **FastAPI Backend & Security Implementation** | ✅ **COMPLETED** | Built complete FastAPI application with Pydantic v2 schemas, SQLAlchemy 2.0 ORM models, stateful HttpOnly session cookies, SHA-256 session token hashing at rest, sliding-window rate limiting, CSRF protection, strict tenant query isolation, and Alembic migration `001_initial_schema.py`. |
 | **Phase 5.1** | **Backend Hardening & Argon2 Enforcement** | ✅ **COMPLETED** | Installed & enforced `argon2-cffi 25.1.0` (OWASP params: 64MB memory, 3 iterations, 4 parallelism). Removed silent bcrypt fallback for new hashes; preserved backward-compatible bcrypt login with automatic rehash upgrade to Argon2id. Fixed [`requirements.txt`](file:///d:/EstateIQ/requirements.txt) with all runtime and DB drivers (`alembic 1.20.1`, `psycopg2-binary 2.9.13`, `httpx 0.28.1`, `asyncpg 0.31.0`). Locally validated Alembic upgrade/downgrade lifecycle on SQLite. Full test suite: **33 / 33 passed (100%)**. |
+| **Phase 5.3** | **Local PostgreSQL Database & Backend Integration** | ✅ **COMPLETED** | Verified local PostgreSQL 18.1 service on port 5432. Automated creation and initialization of `estateiq_db`. Ran Alembic migration `001_initial_schema` creating `users`, `user_sessions`, and `prediction_history`. Implemented 5 dedicated live integration tests in [`backend/tests/test_postgres_integration.py`](file:///d:/EstateIQ/backend/tests/test_postgres_integration.py) covering connectivity, health/metrics APIs, Argon2id auth lifecycle, and tenant-isolated prediction persistence. Suite expanded to **38 / 38 passed (100%)**. |
+| **Phase 5.4** | **Pre-Commit Repository Audit & Gitignore Hardening** | ✅ **COMPLETED** | Conducted zero-access security audit. Created comprehensive root [`.gitignore`](file:///d:/EstateIQ/.gitignore) strictly protecting secrets, datasets, SQLite/local databases, and caches while whitelisting `.env.example` templates. Synchronized documentation metrics across all specs. |
+| **Phase 5.5** | **Git Initialization, Initial Commit & GitHub Push** | ✅ **COMPLETED** | Staged exactly 64 approved files via individual allowlist paths (zero `git add .`). Verified automated pre-commit safety gate. Created initial commit `c8aa35c` (`feat: initial commit of EstateIQ ML pipeline, FastAPI backend, and tests`). Added remote `origin` -> `https://github.com/srushtihkale-creator/EstateIQ.git`. Verified empty remote state via `git ls-remote` and pushed `main` branch cleanly. |
 | **Phase 6** | **Next.js 14 Frontend Implementation** | ⏳ **READY TO COMMENCE** | Initialize Next.js 14 App Router, Tailwind CSS, property valuation form, real-time prediction card with ₹ Lakh/Crore conversions, Recharts model transparency dashboard, user auth modal, and private prediction history. *(Awaiting srush's explicit approval).* |
 | **Phase 7** | **Remote Database Migration & Cloud Deployment** | ⏳ **PENDING APPROVAL** | Run Alembic migration against remote Supabase PostgreSQL, configure Render/Vercel environments, and perform end-to-end cloud verification. |
 
@@ -122,6 +125,7 @@ Run command: `python -m pytest -v` (Execution duration: 13.81s)
 5. **Double-Submit / Custom Header CSRF:** State mutations require `X-CSRF-Token` headers.
 6. **Sliding-Window IP Rate Limiter:** Protects `/api/predictions` (60 req/min) and `/api/auth/` (10 req/min) with automated test reset hook.
 7. **Multi-Tenant Isolation:** Prediction queries explicitly filter by `user_id == current_user.id`. Cross-user access returns 404 Not Found.
+8. **Git Repository & Secrets Isolation (Phase 5.4 - 5.5):** Root `.gitignore` enforces strict exclusion of `backend/.env`, raw/cleaned CSV datasets, SQLite databases, and caches. Staged and committed exactly 64 approved files (`c8aa35c`), confirmed safe push to `origin/main` on `https://github.com/srushtihkale-creator/EstateIQ.git`.
 
 ---
 
@@ -129,7 +133,7 @@ Run command: `python -m pytest -v` (Execution duration: 13.81s)
 
 To resume in the next session:
 1. **Greet the user:** Always address the user as **srush**.
-2. **Review status:** Note that Phase 1 through Phase 5.3 are 100% complete with 38/38 passed tests and live local PostgreSQL `estateiq_db` fully verified.
+2. **Review status:** Note that Phase 1 through Phase 5.5 are 100% complete with 38/38 passed tests, live local PostgreSQL `estateiq_db` verified, and initial commit `c8aa35c` cleanly synced to GitHub `origin/main`.
 3. **Request approval for Phase 6:** Ask for explicit approval to begin **Phase 6: Next.js Frontend Implementation**.
 4. **Phase 6 Implementation Tasks:**
    - Initialize Next.js 14 App Router project in `frontend/` (TypeScript, Tailwind CSS, Lucide icons).

@@ -3,7 +3,7 @@
 **System:** EstateIQ — An Intelligent Real Estate Price Prediction System Using Machine Learning  
 **Document ID:** EIQ-MEM-001  
 **Last Updated:** 2026-10-22  
-**Status:** Phases 1 to 5.3 Complete & Verified (38/38 Tests); Phase 6 (Frontend) Ready for Execution  
+**Status:** Phases 1 to 5.5 Complete & Verified (38/38 Tests); Initial Git Commit `c8aa35c` Pushed to `origin/main`; Phase 6 (Frontend) Ready for Execution  
 **Lead Developer:** srush  
 **Assistant:** Antigravity AI  
 
@@ -76,6 +76,8 @@ EstateIQ is a full-stack, configuration-driven educational and decision-support 
 * Backend Routers: [`backend/app/api/`](file:///d:/EstateIQ/backend/app/api/)
 * **Backend Database:** Local PostgreSQL 18.1 (`estateiq_db` on port 5432) managed with Alembic.
 * **Test Suite:** [`backend/tests/test_postgres_integration.py`](file:///d:/EstateIQ/backend/tests/test_postgres_integration.py) verifies live PostgreSQL tables, keys, Argon2id auth, sessions, isolation, and prediction persistence.
+* **Git Repository:** `https://github.com/srushtihkale-creator/EstateIQ.git` (tracked on `origin/main`)
+* **Initial Commit:** `c8aa35c` (`feat: initial commit of EstateIQ ML pipeline, FastAPI backend, and tests`)
 * **Technical Spec:** [`technical.md`](file:///d:/EstateIQ/technical.md)
 * **Progress Tracker:** [`progress.md`](file:///d:/EstateIQ/progress.md)
 * **ML Evaluation Report:** [`docs/ML_EVALUATION_REPORT.md`](file:///d:/EstateIQ/docs/ML_EVALUATION_REPORT.md)
@@ -83,8 +85,25 @@ EstateIQ is a full-stack, configuration-driven educational and decision-support 
 
 ---
 
-## 6. Hand-Off & Next Session Protocol
+## 6. Git Repository & Release Governance
+
+1. **Root `.gitignore` Hardening (Phase 5.4):**
+   - Strictly protects `backend/.env` and all environment files while whitelisting `.env.example` templates.
+   - Ignores local databases (`*.db`, `*.sqlite`, `*.sqlite3`), raw/cleaned CSV datasets (`train.csv`, `test.csv`, `train_cleaned.csv`, `test_cleaned.csv`, `sample_submission*.csv`), `Prompt/`, and Python/pytest caches.
+2. **Initial Commit & Push (Phase 5.5):**
+   - **Branch:** `main` tracking `origin/main`.
+   - **Commit Hash:** `c8aa35c` (`c8aa35c2fa1f193ac400df17ca313b88e747d49f`).
+   - **Committed Files:** Exactly 64 verified files (6 PRD/SRS/docs, 29 FastAPI backend modules & Alembic migrations, 5 backend test modules, 18 ML pipeline/modules/tests, 3 serialized ML artifacts, and config/templates).
+   - **Exclusions Confirmed:** `backend/.env`, CSV datasets, SQLite databases, caches, `Prompt/Prompt.txt`, and `techincal.md` are 100% excluded.
+   - **Remote:** Successfully pushed to `https://github.com/srushtihkale-creator/EstateIQ.git` with clean working-tree synchronization.
+
+---
+
+## 7. Hand-Off & Next Session Protocol
 
 * **Target User:** Address as **srush**.
-* **Current State:** 38/38 pytest tests passing (15 SQLite unit tests, 5 live PostgreSQL integration tests, 12 preprocessing tests, 6 training pipeline tests). Local PostgreSQL `estateiq_db` verified, tables initialized and migrated, clean test teardown completed.
+* **Current State:** 
+  - 38/38 pytest tests passing (15 SQLite unit tests, 5 live PostgreSQL integration tests, 12 preprocessing tests, 6 training pipeline tests).
+  - Local PostgreSQL `estateiq_db` verified, tables initialized and migrated, clean test teardown completed.
+  - Phase 5.5 complete: Initial commit `c8aa35c` pushed to GitHub repository `origin/main`.
 * **Next Action:** Request srush's approval to begin **Phase 6: Next.js Frontend Implementation**.

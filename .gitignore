@@ -66,3 +66,8 @@ Desktop.ini
 *.swo
 *~
 *.log
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
