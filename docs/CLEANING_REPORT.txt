@@ -1,0 +1,30 @@
+REAL ESTATE DATASET CLEANING REPORT
+
+Files supplied:
+- train.csv: 29451 rows x 12 columns
+- test.csv: 68720 rows x 11 columns
+- sample_submission.csv: 68720 rows x 1 columns
+
+Changes made to processed files:
+1. Original files are preserved unchanged in the original/ folder.
+2. Leading/trailing whitespace in text fields was stripped.
+3. LONGITUDE and LATITUDE values were swapped because the sample values and coordinate ranges show that the supplied columns appear reversed.
+4. After swapping, coordinate pairs outside a broad India bounding box (latitude 6.5 to 37.5, longitude 68.0 to 97.5) were marked missing (blank/NaN), rather than inventing replacement coordinates.
+   - train rows with invalid/out-of-bounds coordinates marked missing: 258
+   - test rows with invalid/out-of-bounds coordinates marked missing: 540
+5. Exact duplicate rows were removed from the labelled training file only:
+   - removed: 401
+   - processed train rows: 29050
+6. Test rows were not deduplicated because they are unlabeled prediction records and should be preserved.
+7. sample_submission.csv was not altered. Its target zeros are submission placeholders, not real property prices.
+
+Issues NOT automatically changed:
+- Extreme target prices: 298 training rows have TARGET(PRICE_IN_LACS) > 1000; maximum = 30000.0 lakh. These are flagged for source/domain review, not deleted automatically.
+- Large property areas: 72 training rows have SQUARE_FT > 100,000. These were retained pending verification.
+- Dataset source and whether target prices are genuine completed-sale prices cannot be established from CSV files alone. Verify source/licence and label meaning before claiming real transaction-price accuracy.
+
+Important:
+- Use processed/train_cleaned.csv for initial model experiments, after reviewing this report.
+- Use processed/test_cleaned.csv only for inference/submission; it has no known target column.
+- Do not use sample_submission_template_unchanged.csv as training labels.
+- The processed data is a conservative cleanup, not proof that all records are true or market-verified.

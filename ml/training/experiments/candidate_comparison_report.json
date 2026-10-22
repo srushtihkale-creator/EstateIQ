@@ -1,0 +1,109 @@
+{
+  "timestamp": "2026-10-21T18:14:35Z",
+  "dataset_path": "ml/training/data/processed/train_cleaned.csv",
+  "dataset_sha256": "f667746b9afd1a85c7b1f96c7ca501c8d6174893572828f57049614ad6d27cc0",
+  "n_train_samples": 23240,
+  "n_val_samples": 5810,
+  "random_state": 42,
+  "val_size": 0.2,
+  "selection_rule": "Minimize validation RMSE on original price scale (Lacs)",
+  "best_model": "DecisionTree_Raw",
+  "candidates": [
+    {
+      "model_name": "LinearRegression_Raw",
+      "use_log1p_target": false,
+      "fit_time_seconds": 0.153,
+      "val_rmse_lacs": 601.5897,
+      "val_mae_lacs": 130.0057,
+      "val_r2_score": 0.3391,
+      "train_rmse_lacs": 555.4097,
+      "train_mae_lacs": 123.2878,
+      "train_r2_score": 0.2116,
+      "overfitting_ratio": 1.08
+    },
+    {
+      "model_name": "LinearRegression_Log1p",
+      "use_log1p_target": true,
+      "fit_time_seconds": 0.153,
+      "val_rmse_lacs": 8012.8874,
+      "val_mae_lacs": 206.3257,
+      "val_r2_score": -116.2576,
+      "train_rmse_lacs": 8741.3248,
+      "train_mae_lacs": 193.85,
+      "train_r2_score": -194.2783,
+      "overfitting_ratio": 0.92
+    },
+    {
+      "model_name": "DecisionTree_Raw",
+      "use_log1p_target": false,
+      "fit_time_seconds": 0.2,
+      "val_rmse_lacs": 253.1552,
+      "val_mae_lacs": 40.7012,
+      "val_r2_score": 0.883,
+      "train_rmse_lacs": 158.1876,
+      "train_mae_lacs": 30.7827,
+      "train_r2_score": 0.936,
+      "overfitting_ratio": 1.6
+    },
+    {
+      "model_name": "DecisionTree_Log1p",
+      "use_log1p_target": true,
+      "fit_time_seconds": 0.186,
+      "val_rmse_lacs": 413.5909,
+      "val_mae_lacs": 41.0345,
+      "val_r2_score": 0.6876,
+      "train_rmse_lacs": 256.4869,
+      "train_mae_lacs": 29.8205,
+      "train_r2_score": 0.8319,
+      "overfitting_ratio": 1.61
+    },
+    {
+      "model_name": "RandomForest_Raw",
+      "use_log1p_target": false,
+      "fit_time_seconds": 6.817,
+      "val_rmse_lacs": 326.4551,
+      "val_mae_lacs": 40.4276,
+      "val_r2_score": 0.8054,
+      "train_rmse_lacs": 192.7473,
+      "train_mae_lacs": 28.3751,
+      "train_r2_score": 0.9051,
+      "overfitting_ratio": 1.69
+    },
+    {
+      "model_name": "RandomForest_Log1p",
+      "use_log1p_target": true,
+      "fit_time_seconds": 5.055,
+      "val_rmse_lacs": 423.0327,
+      "val_mae_lacs": 37.4532,
+      "val_r2_score": 0.6732,
+      "train_rmse_lacs": 265.17,
+      "train_mae_lacs": 26.1252,
+      "train_r2_score": 0.8203,
+      "overfitting_ratio": 1.6
+    },
+    {
+      "model_name": "KNN_Raw",
+      "use_log1p_target": false,
+      "fit_time_seconds": 0.003,
+      "val_rmse_lacs": 391.8247,
+      "val_mae_lacs": 50.0058,
+      "val_r2_score": 0.7196,
+      "train_rmse_lacs": 247.4748,
+      "train_mae_lacs": 37.8563,
+      "train_r2_score": 0.8435,
+      "overfitting_ratio": 1.58
+    },
+    {
+      "model_name": "KNN_Log1p",
+      "use_log1p_target": true,
+      "fit_time_seconds": 0.003,
+      "val_rmse_lacs": 467.2223,
+      "val_mae_lacs": 49.5365,
+      "val_r2_score": 0.6013,
+      "train_rmse_lacs": 303.2178,
+      "train_mae_lacs": 38.2455,
+      "train_r2_score": 0.765,
+      "overfitting_ratio": 1.54
+    }
+  ]
+}

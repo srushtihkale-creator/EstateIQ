@@ -1,0 +1,19 @@
+{
+  "model_name": "DecisionTree_Raw",
+  "estimator_class": "DecisionTreeRegressor",
+  "estimator_params": "{'ccp_alpha': 0.0, 'criterion': 'squared_error', 'max_depth': 12, 'max_features': None, 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 5, 'min_samples_split': 10, 'min_weight_fraction_leaf': 0.0, 'monotonic_cst': None, 'random_state': 42, 'splitter': 'best'}",
+  "use_log1p_target": false,
+  "training_timestamp": "2026-10-21T18:14:35Z",
+  "dataset_sha256": "f667746b9afd1a85c7b1f96c7ca501c8d6174893572828f57049614ad6d27cc0",
+  "n_train_samples": 23240,
+  "n_val_samples": 5810,
+  "random_state": 42,
+  "val_rmse_lacs": 253.1552,
+  "val_mae_lacs": 40.7012,
+  "val_r2_score": 0.883,
+  "train_rmse_lacs": 158.1876,
+  "train_mae_lacs": 30.7827,
+  "train_r2_score": 0.936,
+  "selection_rule": "Minimize validation RMSE on original price scale (Lacs)",
+  "target_currency_unit": "Lakhs INR (1 Lac = 100,000 INR)"
+}

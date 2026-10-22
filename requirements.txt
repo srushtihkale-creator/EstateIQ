@@ -1,0 +1,30 @@
+# EstateIQ - Verified Python Dependencies
+# Environment: Python 3.12 (Validated and Tested)
+
+# Core Machine Learning Dependencies
+pandas>=3.0.0,<4.0.0
+scikit-learn>=1.9.0,<2.0.0
+joblib>=1.6.0,<2.0.0
+numpy>=2.0.0,<3.0.0
+scipy>=1.18.0,<2.0.0
+
+# API, Backend & Validation
+fastapi>=0.115.0
+uvicorn>=0.30.0
+pydantic>=2.10.0
+pydantic-settings>=2.7.0
+
+# Database & Migrations
+sqlalchemy>=2.0.0,<3.0.0
+alembic>=1.13.0
+psycopg2-binary>=2.9.9
+asyncpg>=0.30.0
+
+# Authentication & Cryptography
+argon2-cffi>=23.1.0
+passlib>=1.7.4
+bcrypt>=4.0.0
+
+# Testing & HTTP Clients
+pytest>=8.0.0
+httpx>=0.27.0

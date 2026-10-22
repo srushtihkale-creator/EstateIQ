@@ -1,0 +1,68 @@
+# ==============================================================================
+# EstateIQ — Root Git Ignore Configuration (.gitignore)
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. Environment Files & Secrets (MANDATORY PROTECTION)
+# ------------------------------------------------------------------------------
+*.env
+*.env.*
+.env
+backend/.env
+!.env.example
+!backend/.env.example
+
+# ------------------------------------------------------------------------------
+# 2. Local Databases & Temporary Database Files
+# ------------------------------------------------------------------------------
+*.db
+*.sqlite
+*.sqlite3
+estateiq_local.db
+
+# ------------------------------------------------------------------------------
+# 3. Datasets (Excluded pending redistribution licensing verification)
+# ------------------------------------------------------------------------------
+ml/training/data/raw/original/*.csv
+ml/training/data/processed/*.csv
+*.csv
+
+# ------------------------------------------------------------------------------
+# 4. Python Bytecode, Caches & Virtual Environments
+# ------------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+ENV/
+env/
+
+# ------------------------------------------------------------------------------
+# 5. Frontend & Node Build Outputs (Phase 6 Preparation)
+# ------------------------------------------------------------------------------
+node_modules/
+frontend/node_modules/
+.next/
+frontend/.next/
+frontend/out/
+dist/
+build/
+
+# ------------------------------------------------------------------------------
+# 6. Operating System & Editor Metadata
+# ------------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.log
